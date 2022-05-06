@@ -19,6 +19,9 @@ const anyActionGen = () => fc.record(
   { state: numberStateGen(),
     action: fc.record({ type: fc.string() })})
 
+/**
+ * This will fail test as action cannot be 'anything' it has to have 'type' property..
+ */
 const chaosGen = () => fc.record(
   { state: numberStateGen(),
     action: fc.anything()});

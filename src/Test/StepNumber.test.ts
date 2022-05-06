@@ -5,14 +5,14 @@ export const stepNumberStateGen = () => fc.record({
   stepNum: fc.oneof( fc.integer(), fc.float())
 })
 
-export const stepNumberAcrionGen = () => fc.record({
+export const stepNumberActionGen = () => fc.record({
   type: fc.constant('updateStepNum'),
   payload: fc.string()
 })
 
 export const inputGen = (stateGen: () => fc.Arbitrary<StepNumberState>) => fc.record(
   { state: stateGen(),
-    action: stepNumberAcrionGen()
+    action: stepNumberActionGen()
 })
 
 describe('Step Number Component', () => {

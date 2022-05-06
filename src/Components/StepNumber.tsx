@@ -1,4 +1,10 @@
+/**
+ * A leaf component is as simple as it can be.
+ */
+
 // import { useReducer } from "react"
+import { memo } from 'react'
+import { isSameState } from '../Util/util'
 
 export type StepNumberState = {
   stepNum: number
@@ -21,7 +27,11 @@ export const stepNumberReducer = (state: StepNumberState, action: StepNumberActi
   }
 }
 
-export const StepNumberComp = (props: {state: StepNumberState, dispatch: Function }) => {
+export const StepNumber = (props: {state: StepNumberState, dispatch: Function }) => {
+  /**
+   * In terms of refactioring - following two lines are the same.
+   * A component that uses single reducer can easly pass hooking on to parent component.
+   */
   const { state, dispatch } = props;
   // const [state, dispatch] = useReducer(stepNumberReducer, initStepNumberState);
 
@@ -31,3 +41,5 @@ export const StepNumberComp = (props: {state: StepNumberState, dispatch: Functio
     onChange={(e) => dispatch({ type: "updateStepNum", payload: e.target.value })} />
   </div>)
 }
+
+export const StepNumberComp = memo(StepNumber, isSameState);

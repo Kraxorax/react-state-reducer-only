@@ -1,11 +1,13 @@
 import './App.css';
-import { Page } from '../Page/Page';
+import { PageComp } from '../Page/Page';
 
-
+/**
+ * Nothing to see here.
+ */
 const App = () => {
   return (
     <div className="App">
-      <Page />
+      <PageComp />
     </div>
   );
 }
